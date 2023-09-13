@@ -79,9 +79,10 @@ const reviews_input = document.getElementById("reviews-input");
 reviews_form.addEventListener("submit", e => 
 {
     e.preventDefault();
-    if(reviews_input.value != "")
+    if(reviews_input.value != ""
+    && reviews_input.value == items[shuffled_due_item_indexes[currentReviewIndex]].front)
     {
-        console.log(reviews_input.value);
+        alert("success!");
     }
 });
 
