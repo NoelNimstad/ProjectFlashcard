@@ -2,71 +2,73 @@
 
 const name_input = document.getElementById("name");
 
-name_input.value = localStorage.getItem("name");
-name_input.addEventListener("change", () => 
+name_input.value = localStorage.getItem("name"); // read the current name from localstorage
+name_input.addEventListener("change", () => // if user types
 {
-    localStorage.setItem("name", name_input.value);
+    localStorage.setItem("name", name_input.value); // then change the localstorage value 
 });
 
 // SECTION Item Logic
 
-let items = [];
-items = JSON.parse(localStorage.getItem("items")) || Array.prototype;
+let items = []; // initialize items as an empty array
+items = JSON.parse(localStorage.getItem("items")) || Array.prototype; // try to retrieve localstorage's items, otherwise set it to an empty array
 
 class Item 
 {
     constructor(front, back, type)
     {
-        this.front = front;
-        this.back = back;
-        this.type = type;
-        this.stage = 0;
-        this.reviewDate = new Date();
+        this.front = front; // the prompt the user will see
+        this.back = back; // the answer to the flashcard
+        this.type = type; // the type of the flashcard, currently suported: type
+        this.stage = 0; // the SRS stage of the item, default 0
+        this.reviewDate = new Date(); // the review date of the item, default date of creation
     }
 }
 
 function AddItem(front, back, type)
 {
-    items.push(new Item(front, back, type));
-    localStorage.setItem("items", JSON.stringify(items));
-    findDueItems();
+    items.push(new Item(front, back, type)); // push the item to items
+    localStorage.setItem("items", JSON.stringify(items)); // update the local storage's value
+    findDueItems(); // refind and reshuffle all due items
 }
-
-console.log(items);
 
 // SECTION Review Logic
 
-let due_item_indexes = [];
-let shuffled_due_item_indexes = [];
+let due_item_indexes = []; // initialize an empty array of due items
+let shuffled_due_item_indexes = []; // ^
 
 function shuffleDueItems()
 {
-    shuffled_due_item_indexes = [ ...due_item_indexes ];
-    for(let i = 0; i < due_item_indexes.length; i++)
+    shuffled_due_item_indexes = [ ...due_item_indexes ]; // clone the due items
+    for(let i = 0; i < shuffled_due_item_indexes.length; i++) // loop through each item
     {
-        const random = Math.floor(Math.random() * shuffled_due_item_indexes.length);    
-        [shuffled_due_item_indexes[i], shuffled_due_item_indexes[random]] = [shuffled_due_item_indexes[random], shuffled_due_item_indexes[i]];
+        const random = Math.floor(Math.random() * shuffled_due_item_indexes.length); // find a random number between 1 and the array's öength 
+        [shuffled_due_item_indexes[i], shuffled_due_item_indexes[random]] 
+        = [shuffled_due_item_indexes[random], shuffled_due_item_indexes[i]]; // swap places with said found index
     }
 }
 
-let currentReviewIndex = 0;
+let currentReviewIndex = 0; // user reviews always start at index 0
 const prompt_label = document.getElementById("prompt");
 function updateCard()
 {
-    if(items.length > 0)
+    if(items.length > 0) // make sure there is an item
     {
-        prompt_label.innerText = items[shuffled_due_item_indexes[currentReviewIndex]].front;
+        prompt_label.innerText = items[shuffled_due_item_indexes[currentReviewIndex]].front; // set the prompt label to the current item's prompt
+    } else 
+    {
+        prompt_label.innerText = "why are you here?"; // "easter egg"
     }
 }
 
-function findDueItems()
+function findDueItems() 
 {
-    const now = Date.parse(new Date());
-    for(let i = 0; i < items.length; i++)
+    const now = Date.parse(new Date()); // find the current time
+    for(let i = 0; i < items.length; i++) // loop through each item in items
     {
-        if((Date.parse(items[i].reviewDate) - now) < 0)
+        if((Date.parse(items[i].reviewDate) - now) < 0) // if the review date of the item has passed
         {
-            due_item_indexes.push(i)
+            due_item_indexes.push(i) // then push it to the due items
         }
     }
     shuffleDueItems();
@@ -80,7 +82,7 @@ reviews_form.addEventListener("submit", e =>
 {
     e.preventDefault();
     if(reviews_input.value != ""
-    && reviews_input.value == items[shuffled_due_item_indexes[currentReviewIndex]].front)
+    && reviews_input.value == items[shuffled_due_item_indexes[currentReviewIndex]].back)
     {
         alert("success!");
     }
