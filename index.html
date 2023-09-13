@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <section class="main" id="home">
+            <section class="container" id="main">
+                <h1 class="welcome">Welcome back <input type="text" id="name" placeholder="Your Name Here"/>!</h1>
+                <section class="items">
+                    <button class="creator" id="creator-button">Create</button>
+                    <button class="reviews" id="item-ammount">0 Reviews</button>
+                </section>
+                <hr>
+                <h1 class="section-title">Load & Backup</h1>
+                <section class="load-and-backup">
+                    <section class="left">
+                        <p>To load a your progress / add items, paste load data here:</p>
+                    </section>
+                    <section class="right">
+                        <p></p><b>It is reccomended that you backup your items once in a while incase your browser clears your local storage!</b>
+                        <br><br>To create a backup of your items, click the button bellow and paste the content somewhere safe.
+                        </p>
+                    </section>
+                </section>
+                <section class="load-and-backup">
+                    <section class="left">
+                        <section class="recovery">
+                            <input type="text" placeholder="Paste item data here" class="recovery" id="recover-input"/>
+                            <button id="recover-button" class="recovery">Go</button>
+                        </section>
+                    </section>
+                    <section class="right">
+                        <button id="generate-backup" class="backup">Backup</button>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section class="main hidden" id="creator">
+            <button class="back" id="creator-back">←  戻る</button>
+            <section class="main-reviews main-creator">
+                <div class="card">
+                    <section class="top">
+                        <input id="creator-front" class="creator-front-side" placeholder="プロンプト"/>
+                    </section>
+                    <section class="bottom">
+                        <input id="creator-input-back" type="text" placeholder="答え"/>
+                    </section>
+                </div>
+                <button id="creator-create-button" class="creator-create-button">カードを作る</button>
+            </section>
+        </section>
+        <section class="main hidden" id="reviews">
+            <button class="back" id="reviews-back">←  戻る</button>
+            <section class="main-reviews">
+                <div class="card">
+                    <section class="top">
+                        <h1 id="prompt">Default Card Value</h1>
+                    </section>
+                    <section class="bottom">
+                        <form id="reviews-form">
+                            <input id="reviews-input" type="text" placeholder="答え"/>
+                        </form>
+                    </section>
+                </div>
+            </section>
+        </section>
+        <div class="wrapper">
+            <section class="title">
+                <h1 class="title">プロジェクト・フラッシュカード</h1>
+            </section>
+        </div>
+    </body>
+</html>

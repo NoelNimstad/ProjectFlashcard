@@ -1,0 +1,396 @@
+body 
+{
+    margin: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    font-family: sans-serif;
+}
+
+.container 
+{
+    width: 100%;
+    height: 100%;
+    max-width: 1250px;
+}
+
+section.main 
+{
+    padding-top: 1rem;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+div.wrapper
+{
+    width: 7.2rem;
+}
+
+section.title
+{
+    width: 7.2rem;
+    display: flex;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    background-color: rgb(30, 116, 255);
+    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.2) inset;
+}
+
+h1.title 
+{
+    writing-mode: vertical-rl;
+    font-size: 2rem;
+    color: white;
+}
+
+h2.subtitle
+{
+    writing-mode: vertical-rl;
+    margin-top: 1rem;
+    color: white;
+}
+
+h2.subtitle > a
+{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+h1.welcome
+{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1.welcome > input
+{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    font-size: 2rem;
+    transition: 0.1s ease;
+}
+
+h1.welcome > input:focus 
+{
+    outline: none;
+    border-bottom: 3px solid blue;
+}
+
+hr 
+{
+    border: none;
+    border-top: 1px dashed gray;
+}
+
+section.items 
+{
+    display: flex;
+    gap: 1rem;
+    padding: 3rem;
+}
+
+section.items > button
+{
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) inset;
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+    background-size: 100%;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+section.items > button:hover
+{
+    background-size: 150%;
+    transition: 2s ease; 
+}
+
+button.creator
+{
+    background-image: url(resources/creator.png);
+}
+
+button.creator
+{
+    background-position: 90%;
+}
+
+button.creator:hover 
+{
+    background-position: 20%;
+    filter: sepia(100%) hue-rotate(50deg);
+}
+
+button.reviews
+{
+    background-image: url(resources/reviews.png);
+}
+
+button.reviews:hover 
+{
+    background-position: 80%;
+    filter: sepia(100%) hue-rotate(-50deg);
+}
+
+h1.section-title
+{
+    text-align: center;
+    position: relative;
+    font-size: 1.75rem;
+}
+
+section.load-and-backup
+{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+section.left 
+{
+    flex: 1;
+}
+
+section.right
+{
+    flex: 1;
+}
+
+button.backup
+{
+    width: 100%;
+    aspect-ratio: 15 / 1;
+    background-image: url(resources/backup.png);
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) inset;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    background-size: 100%;
+    transition: 0.5s ease;
+    cursor: pointer;
+    background-position: 50%;
+    filter: grayscale(50%);
+}
+
+button.backup:hover
+{
+    background-size: 150%;
+    transition: 2s ease; 
+    filter: grayscale(0%);
+}
+
+section.recovery
+{
+    display: flex;
+    aspect-ratio: 15 / 1;
+    margin-top: 0rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+input.recovery
+{
+    width: calc(70% - 1rem);
+    padding-left: 1rem;
+    outline: none;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid rgb(102, 102, 102);
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+button.recovery
+{
+    border: none;
+    background-image: url(resources/creator.png);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) inset;
+    border: 3px solid rgb(102, 102, 102);
+    border-left: none;
+    background-size: 200%;
+    background-position: 0%;
+    width: 30%;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button.recovery:hover
+{
+    background-position: 50%;
+}
+
+button.recovery:active 
+{
+    background-position: 100%;
+}
+
+section.hidden 
+{
+    display: none;
+}
+
+button.back 
+{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border: 3px solid rgb(102, 102, 102);
+    cursor: pointer;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+
+section.main-reviews
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.main-creator
+{
+    flex-direction: column;
+}
+
+div.card
+{
+    max-width: 750px;
+    width: 50%;
+    aspect-ratio: 3 / 2;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border: 5px solid rgb(30, 116, 255);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+section.top 
+{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.top > h1 
+{
+    font-size: 2rem;
+}
+
+section.top > input 
+{
+    font-size: 2rem;
+    font-weight: 500;
+    border: none;
+    width: 90%;
+    text-align: center;
+    outline: none;
+    border-bottom: 1px dashed gray;
+}
+
+section.bottom
+{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+section.bottom > form 
+{
+    width: 100%;
+}
+
+section.bottom > form > input 
+{
+    background-color: transparent;
+    width: 100%;
+    height: 5rem;
+    border-radius: 0;
+    border: none;
+    padding: 0 2rem;
+    outline: none;
+    font-size: 1.5rem;
+}
+
+hr 
+{
+    border-bottom: 1px dashed whitesmoke;
+    margin-top: 8rem;
+    margin-bottom: 10rem;
+}
+
+button.creator-create-button
+{
+    margin-top: 2rem;
+    max-width: 375px;
+    width: 25%;
+    aspect-ratio: 8 / 1;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 10px;
+    border: 3px solid rgb(102, 102, 102);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+button.creator-create-button:active
+{
+    transition: 0.025s ease;
+    box-shadow: 0 0 10px 0 transparent;
+    border: 3px solid rgb(113, 226, 26);
+}
+
+section#creator.main
+{
+    background-image: url(resources/creator_bg.png);
+    background-size: cover;
+    backdrop-filter: brightness(50%);
+}
+
+section#reviews.main
+{
+    background-image: url(resources/reviews_bg.png);
+    background-size: cover;
+    backdrop-filter: brightness(50%);
+}
