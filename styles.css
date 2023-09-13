@@ -349,8 +349,8 @@ section.bottom > form > input, section.bottom > input
 hr 
 {
     border-bottom: 1px dashed whitesmoke;
-    margin-top: 5rem;
-    margin-bottom: 7rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
 button.creator-create-button
