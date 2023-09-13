@@ -71,44 +71,35 @@ function findDueItems()
             due_item_indexes.push(i) // then push it to the due items
         }
     }
-    shuffleDueItems();
-    updateCard();
+    shuffleDueItems(); // shuffle all of the items
+    updateCard(); // update the review card
 }
 
 const reviews_form = document.getElementById("reviews-form");
 const reviews_input = document.getElementById("reviews-input");
 
-reviews_form.addEventListener("submit", e => 
+reviews_form.addEventListener("submit", e => // listen for a submit from the review input
 {
-    e.preventDefault();
-    if(reviews_input.value != ""
-    && reviews_input.value == items[shuffled_due_item_indexes[currentReviewIndex]].back)
+    e.preventDefault(); // prevent the page from reloading
+    if(reviews_input.value == items[shuffled_due_item_indexes[currentReviewIndex]].back) // if the value is correct
     {
-        alert("success!");
+        alert("success!"); // then TODO
     }
 });
-
-findDueItems();
-
-// SECTION Review Button Logic
-
-const item_ammount_text = document.getElementById("item-ammount");
-
-item_ammount_text.innerHTML = due_item_indexes.length + " reviews";
 
 // SECTION Backup Button Logic
 
 const backup_button = document.getElementById("generate-backup");
 
-backup_button.addEventListener("click", () => 
+backup_button.addEventListener("click", () => // listen for clicks on the backup button
 {
-    const B64 = btoa(localStorage.getItem("items"));
-    const p = document.createElement("p");
-    p.innerText = B64;
-    p.style.display = "none";
-    document.body.append(p);
-    navigator.clipboard.writeText(p.innerText);
-    p.remove();
+    const B64 = btoa(localStorage.getItem("items")); // encode the localstorage data
+    const p = document.createElement("p"); // create a p element
+    p.innerText = B64; // set the text content to said encoded text
+    p.style.display = "none"; // hide the element
+    document.body.append(p); // append the element to DOM
+    navigator.clipboard.writeText(p.innerText); // copy the value of the inner text
+    p.remove(); // remove the p element
 })
 
 // SECTION Recovery Logic
@@ -116,10 +107,11 @@ backup_button.addEventListener("click", () =>
 const recovery_input = document.getElementById("recover-input");
 const recovery_button = document.getElementById("recover-button");
 
-recovery_button.addEventListener("click", () => 
+recovery_button.addEventListener("click", () => // listen for clicks on the recovery button
 {
-    items = items.concat(JSON.parse(atob(recovery_input.value)) || []);
-    localStorage.setItem("items", JSON.stringify(items));
+    items = items.concat(JSON.parse(atob(recovery_input.value)) || []); // append the loaded items from Base64 code to the items
+    localStorage.setItem("items", JSON.stringify(items)); // update the local storages item
+    findDueItems();
 });
 
 // SECTION Navigation
@@ -131,24 +123,25 @@ const reviews = document.getElementById("reviews");
 
 /* buttons */
 const creator_button = document.getElementById("creator-button");
+const review_button = document.getElementById("review-button")
 const home_button_from_creator = document.getElementById("creator-back");
 const home_button_from_reviews = document.getElementById("reviews-back");
 
-creator_button.addEventListener("click", () => 
+creator_button.addEventListener("click", () => // listen for clicks on the creator button
 {
-    home.classList.add("hidden");
-    creator.classList.remove("hidden");
+    home.classList.add("hidden"); // hide the homepage
+    creator.classList.remove("hidden"); // show the creator
     findDueItems();
 });
 
-home_button_from_creator.addEventListener("click", () => 
+home_button_from_creator.addEventListener("click", () => // listen for clicks on the home button
 {
     home.classList.remove("hidden");
     creator.classList.add("hidden");
     findDueItems();
-});
+}); 
 
-item_ammount_text.addEventListener("click", () => 
+review_button.addEventListener("click", () => // listen for clicks on the review button
 {
     home.classList.add("hidden");
     reviews.classList.remove("hidden");
@@ -175,7 +168,12 @@ add_to_deck_button.addEventListener("click", () =>
     if(front_side_creator_input.value != "" && back_side_creator_input != "")
     {
         AddItem(front_side_creator_input.value, back_side_creator_input.value, "type_in");
-        item_ammount_text.innerHTML = due_item_indexes.length + " reviews";
+        review_button.innerHTML = due_item_indexes.length + " reviews";
     }
     front_side_creator_input.value = ""; back_side_creator_input.value = "";
 });
+
+// SECTION Initial function calls
+
+findDueItems(); // find initial due items
+review_button.innerHTML = due_item_indexes.length + " reviews"; // set the due items
