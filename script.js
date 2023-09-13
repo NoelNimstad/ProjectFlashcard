@@ -53,7 +53,10 @@ let currentReviewIndex = 0;
 const prompt_label = document.getElementById("prompt");
 function updateCard()
 {
-    prompt_label.innerText = items[shuffled_due_item_indexes[currentReviewIndex]].front;
+    if(items.length > 0)
+    {
+        prompt_label.innerText = items[shuffled_due_item_indexes[currentReviewIndex]].front;
+    }
 }
 
 function findDueItems()

@@ -86,12 +86,6 @@ h1.welcome > input:focus
     border-bottom: 3px solid blue;
 }
 
-hr 
-{
-    border: none;
-    border-top: 1px dashed gray;
-}
-
 section.items 
 {
     display: flex;
@@ -334,12 +328,12 @@ section.bottom
     background-color: whitesmoke;
 }
 
-section.bottom > form 
+section.bottom > form, section.bottom > input
 {
     width: 100%;
 }
 
-section.bottom > form > input 
+section.bottom > form > input, section.bottom > input
 {
     background-color: transparent;
     width: 100%;
@@ -354,8 +348,8 @@ section.bottom > form > input
 hr 
 {
     border-bottom: 1px dashed whitesmoke;
-    margin-top: 8rem;
-    margin-bottom: 10rem;
+    margin-top: 5rem;
+    margin-bottom: 7rem;
 }
 
 button.creator-create-button
