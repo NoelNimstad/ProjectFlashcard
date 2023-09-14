@@ -182,14 +182,12 @@ button.backup
     transition: 0.5s ease;
     cursor: pointer;
     background-position: 50%;
-    filter: grayscale(50%);
 }
 
 button.backup:hover
 {
     background-size: 150%;
     transition: 2s ease; 
-    filter: grayscale(0%);
 }
 
 section.recovery
@@ -348,7 +346,8 @@ section.bottom > form > input, section.bottom > input
 
 hr 
 {
-    border-bottom: 1px dashed whitesmoke;
+    border: none;
+    border-bottom: 1px dashed rgb(196, 196, 196);
     margin-top: 2rem;
     margin-bottom: 4rem;
 }
@@ -388,4 +387,22 @@ section#reviews.main
     background-image: url(resources/reviews_bg.png);
     background-size: cover;
     backdrop-filter: brightness(50%);
+}
+
+section.footer 
+{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 1.5rem;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5rem;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
