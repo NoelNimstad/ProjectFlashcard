@@ -129,32 +129,29 @@ const home_button_from_reviews = document.getElementById("reviews-back");
 
 creator_button.addEventListener("click", () => // listen for clicks on the creator button
 {
-    home.classList.add("hidden"); // hide the homepage
-    creator.classList.remove("hidden"); // show the creator
-    findDueItems();
+    home.classList.add("hidden"); // hides the homepage
+    creator.classList.remove("hidden"); // shows the creator
 });
 
 home_button_from_creator.addEventListener("click", () => // listen for clicks on the home button
 {
-    home.classList.remove("hidden");
-    creator.classList.add("hidden");
-    findDueItems();
+    home.classList.remove("hidden"); // shows the homepage
+    creator.classList.add("hidden"); // hides the creator
+    findDueItems(); // searches for due items
 }); 
 
 review_button.addEventListener("click", () => // listen for clicks on the review button
 {
-    home.classList.add("hidden");
-    reviews.classList.remove("hidden");
-    findDueItems();
-    currentReviewIndex = 0;
+    home.classList.add("hidden"); // hides the homepage
+    reviews.classList.remove("hidden"); // shows the review page
+    currentReviewIndex = 0; // resets the review index
 });
 
 home_button_from_reviews.addEventListener("click", () => 
 {
-    home.classList.remove("hidden");
-    reviews.classList.add("hidden");
-    findDueItems();
-    currentReviewIndex = 0;
+    home.classList.remove("hidden"); // shows the homepage
+    reviews.classList.add("hidden"); // hides the review page
+    findDueItems(); // searches for due items
 });
 
 // SECTION Creator Logic
@@ -163,14 +160,14 @@ const front_side_creator_input = document.getElementById("creator-front");
 const back_side_creator_input = document.getElementById("creator-input-back");
 const add_to_deck_button = document.getElementById("creator-create-button");
 
-add_to_deck_button.addEventListener("click", () => 
+add_to_deck_button.addEventListener("click", () => // listen for clicks on the "add card" button
 {
-    if(front_side_creator_input.value != "" && back_side_creator_input != "")
+    if(front_side_creator_input.value != "" && back_side_creator_input != "") // if there is actual input
     {
-        AddItem(front_side_creator_input.value, back_side_creator_input.value, "type_in");
-        review_button.innerHTML = due_item_indexes.length + " reviews";
+        AddItem(front_side_creator_input.value, back_side_creator_input.value, "type_in"); // then register the item
+        review_button.innerHTML = due_item_indexes.length + " reviews"; // and update the ammount of due items
     }
-    front_side_creator_input.value = ""; back_side_creator_input.value = "";
+    front_side_creator_input.value = ""; back_side_creator_input.value = ""; // reset the values of the card
 });
 
 // SECTION Initial function calls
