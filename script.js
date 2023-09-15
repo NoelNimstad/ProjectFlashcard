@@ -83,7 +83,31 @@ reviews_form.addEventListener("submit", e => // listen for a submit from the rev
     e.preventDefault(); // prevent the page from reloading
     if(reviews_input.value == items[shuffled_due_item_indexes[currentReviewIndex]].back) // if the value is correct
     {
-        alert("success!"); // then TODO
+        items[shuffled_due_item_indexes[currentReviewIndex]].stage += 1;
+        items[shuffled_due_item_indexes[currentReviewIndex]].reviewDate = 
+            calculateReviewDate(items[shuffled_due_item_indexes[currentReviewIndex]].stage);
+
+        localStorage.setItem("items", JSON.stringify(items)); // update the local storage's value
+
+        currentReviewIndex++;
+        if(currentReviewIndex < shuffled_due_item_indexes.length)
+        {
+            updateCard();
+        } else 
+        {
+            home.classList.remove("hidden"); // shows the homepage
+            reviews.classList.add("hidden"); // hides the review page
+            
+            const now = Date.parse(new Date()); // find the current time
+            for(let i = 0; i < items.length; i++) // loop through each item in items
+            {
+                if((Date.parse(items[i].reviewDate) - now) < 0) // if the review date of the item has passed
+                {
+                    due_item_indexes.push(i) // then push it to the due items
+                }
+            }
+            shuffleDueItems(); // shuffle all of the items
+        }
     }
 });
 
@@ -174,3 +198,11 @@ add_to_deck_button.addEventListener("click", () => // listen for clicks on the "
 
 findDueItems(); // find initial due items
 review_button.innerHTML = due_item_indexes.length + " reviews"; // set the due items
+
+// SECTION Review date
+
+function calculateReviewDate(stage)
+{
+    let d = new Date();
+    return d.setTime(d.getTime() + (3600000 * ((Math.pow(4, stage) / (2 * stage)) + stage)));
+}
