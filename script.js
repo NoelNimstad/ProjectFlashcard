@@ -203,6 +203,6 @@ review_button.innerHTML = due_item_indexes.length + " reviews"; // set the due i
 
 function calculateReviewDate(stage)
 {
-    let d = new Date();
-    return d.setTime(d.getTime() + (3600000 * ((Math.pow(4, stage) / (2 * stage)) + stage)));
+    let d = new Date(); // get the now date
+    return d.setTime(d.getTime() + (3600000 * ((Math.pow(4, stage) / (2 * stage)) + stage))); // get current time and add X ammount of hours to the time, thne set the time to that.
 }
